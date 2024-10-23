@@ -105,6 +105,19 @@ Node* mergeLists(Node* head1, Node* head2) {
     return result;
 }
 
+bool isEven(Node* head){
+
+    bool isEven = true;
+    Node* current = head;
+
+    while (current != nullptr){
+        isEven = !isEven; // Flip the flag
+        current = current->next;
+    }
+
+    return isEven;
+}
+
 // This function reverses a linked list. 
 //It uses three pointers (`prev`, `current`, and `next`) to reverse the list iteratively.
 Node* reverseList(Node* head){
@@ -131,8 +144,11 @@ int main()
     list.insertBeginning(head, 8);
     list.insertBeginning(head, 5);
     list.insertBeginning(head, 4);
+    list.insertBeginning(head, 3);
     list.insertBeginning(head, 1);
     list.printList(head);
+
+    std::cout << "Is List 1 Even? : " << isEven(head) << std::endl;
 
     Node *head2 = nullptr;
 
@@ -143,6 +159,8 @@ int main()
     list2.insertBeginning(head2, 3);
     list2.insertBeginning(head2, 2);
     list2.printList(head2);
+
+    std::cout << "Is List 2 Even? : " << isEven(head2) << std::endl;
 
     Node* mergedHead = mergeLists(head, head2);
     list.printList(mergedHead);
